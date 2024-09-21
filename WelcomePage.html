@@ -5,45 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Learning App</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             background-color: #313446;
+            font-family: 'Inter', sans-serif;
         }
         .container {
             position: relative;
             width: 100vw;
             height: 100vh;
-            background-color: #313446;
         }
         .center-text {
             position: absolute;
-            top: 45%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
             text-align: center;
-            font-size: 40px;
-            font-family: 'Inter', sans-serif;
-            font-style: italic;
+            font-size: 48px;
             font-weight: 900;
             line-height: 1.5;
         }
         .play-button-bg {
             position: absolute;
-            top: 60%;
+            top: 55%;
             left: 50%;
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             background: #9899A2;
             border-radius: 50%;
             transform: translateX(-50%);
         }
         .play-button-inner {
             position: absolute;
-            top: 61%;
+            top: 57%;
             left: 50%;
-            width: 100px;
-            height: 100px;
+            width: 60px;
+            height: 60px;
             background: #D9D9D9;
             border-radius: 50%;
             transform: translateX(-50%);
@@ -53,76 +56,63 @@
         .text-rotated {
             position: absolute;
             color: white;
-            font-size: 24px;
+            font-size: 16px;
             font-family: 'Inter', sans-serif;
-            font-style: italic;
             font-weight: 900;
-            opacity: 0.5;
+            opacity: 0.7;
         }
+
+        /* Precise positioning based on your image */
 
         .text1 {
-            top: 80%;
-            left: 20%;
-            transform: rotate(-90deg);
-        }
-
-        .text2 {
-            top: 15%;
-            left: 70%;
-            transform: rotate(90deg);
-        }
-
-        .text3 {
             top: 20%;
             left: 5%;
-            color: #B4CEBB;
+            transform: rotate(-30deg);
         }
-
+        .text2 {
+            top: 10%;
+            left: 30%;
+            transform: rotate(0deg);
+        }
+        .text3 {
+            top: 15%;
+            left: 80%;
+            transform: rotate(10deg);
+        }
         .text4 {
-            top: 70%;
-            left: 10%;
-            transform: rotate(-90deg);
-            color: #B8D1BF;
+            top: 35%;
+            left: 95%;
+            transform: rotate(90deg);
         }
-
         .text5 {
             top: 60%;
+            left: 90%;
+            transform: rotate(90deg);
+        }
+        .text6 {
+            top: 75%;
+            left: 80%;
+            transform: rotate(0deg);
+        }
+        .text7 {
+            top: 85%;
             left: 60%;
             transform: rotate(-90deg);
-            color: #9899A2;
         }
-
-        .text6 {
-            top: 40%;
-            left: 85%;
-            transform: rotate(90deg);
-            color: #B8D1BF;
-        }
-
-        .text7 {
-            top: 10%;
-            left: 80%;
-            color: #B8D1BF;
-        }
-
         .text8 {
-            top: 50%;
-            left: 40%;
-            transform: rotate(180deg);
-            color: #9899A2;
-        }
-
-        .text9 {
-            top: 90%;
-            left: 5%;
-            color: #B8D1BF;
-        }
-
-        .text10 {
             top: 70%;
-            left: 75%;
+            left: 35%;
             transform: rotate(-90deg);
-            color: #9899A2;
+        }
+        .text9 {
+            top: 65%;
+            left: 5%;
+            transform: rotate(-10deg);
+        }
+        .text10 {
+            top: 40%;
+            left: 10%;
+            transform: rotate(-45deg);
         }
 
         /* Add additional text styles here as needed */
@@ -140,16 +130,16 @@
         <div class="play-button-inner"></div>
 
         <!-- Rotated Text Elements -->
-        <div class="text-rotated text1">欢迎使用我们的语言学习应用</div>
-        <div class="text-rotated text2">selamat datang ke aplikasi pembelajaran bahasa</div>
-        <div class="text-rotated text3">bem-vindo ao nosso aplicativo de aprendizagem de idiomas</div>
-        <div class="text-rotated text4">barka da zuwa app na koyon harshe</div>
-        <div class="text-rotated text5">Witamy w naszej aplikacji do nauki języków</div>
+        <div class="text-rotated text1">Welina mai i kā polokalamu aʻo ʻōlelo</div>
+        <div class="text-rotated text2">Velkomin í tungumálanámsforritið okkar</div>
+        <div class="text-rotated text3">歡迎使用我們的語言學習應用</div>
+        <div class="text-rotated text4">bienvenue sur notre application d’apprentissage des langues</div>
+        <div class="text-rotated text5">selamat datang ke aplikasi pembelajaran bahasa</div>
         <div class="text-rotated text6">言語学習アプリへようこそ</div>
         <div class="text-rotated text7">ברוכים הבאים לאפליקציית לימוד השפה שלנו</div>
-        <div class="text-rotated text8">mirë se vini në aplikacionin tonë të mësimit të gjuhës</div>
+        <div class="text-rotated text8">Добро пожаловать в наше приложение для изучения языка</div>
         <div class="text-rotated text9">chào mừng bạn đến với ứng dụng học ngôn ngữ của chúng tôi</div>
-        <div class="text-rotated text10">добродошли у нашу апликацију за учење језика</div>
+        <div class="text-rotated text10">bien-vindo ao nosso aplicativo de aprendizagem de idiomas</div>
     </div>
 </body>
 </html>
