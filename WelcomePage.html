@@ -11,135 +11,89 @@
             box-sizing: border-box;
         }
         body {
-            margin: 0;
-            background-color: #313446;
-            font-family: 'Inter', sans-serif;
+            background-color: #2e3340;
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .container {
             position: relative;
-            width: 100vw;
-            height: 100vh;
+            width: 80%;
+            height: 80%;
         }
-        .center-text {
+        .text {
             position: absolute;
-            top: 30%;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        .centered {
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            font-size: 48px;
-            font-weight: 900;
-            line-height: 1.5;
+            font-size: 2rem;
+            font-weight: bold;
         }
-        .play-button-bg {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            background: #9899A2;
-            border-radius: 50%;
-            transform: translateX(-50%);
-        }
-        .play-button-inner {
-            position: absolute;
-            top: 57%;
-            left: 50%;
-            width: 60px;
-            height: 60px;
-            background: #D9D9D9;
-            border-radius: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Rotated Text Styling */
-        .text-rotated {
-            position: absolute;
-            color: white;
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            opacity: 0.7;
-        }
-
-        /* Precise positioning based on your image */
-
-        .text1 {
-            top: 20%;
-            left: 5%;
-            transform: rotate(-30deg);
-        }
-        .text2 {
+        .rotate1 {
             top: 10%;
-            left: 30%;
-            transform: rotate(0deg);
-        }
-        .text3 {
-            top: 15%;
-            left: 80%;
-            transform: rotate(10deg);
-        }
-        .text4 {
-            top: 35%;
-            left: 95%;
-            transform: rotate(90deg);
-        }
-        .text5 {
-            top: 60%;
-            left: 90%;
-            transform: rotate(90deg);
-        }
-        .text6 {
-            top: 75%;
-            left: 80%;
-            transform: rotate(0deg);
-        }
-        .text7 {
-            top: 85%;
-            left: 60%;
-            transform: rotate(-90deg);
-        }
-        .text8 {
-            top: 70%;
-            left: 35%;
-            transform: rotate(-90deg);
-        }
-        .text9 {
-            top: 65%;
-            left: 5%;
-            transform: rotate(-10deg);
-        }
-        .text10 {
-            top: 40%;
             left: 10%;
             transform: rotate(-45deg);
         }
-
-        /* Add additional text styles here as needed */
+        .rotate2 {
+            top: 20%;
+            right: 20%;
+            transform: rotate(90deg);
+        }
+        .rotate3 {
+            bottom: 10%;
+            left: 25%;
+            transform: rotate(-15deg);
+        }
+        .rotate4 {
+            bottom: 15%;
+            right: 15%;
+            transform: rotate(30deg);
+        }
+        .rotate5 {
+            top: 5%;
+            right: 5%;
+            transform: rotate(-75deg);
+        }
+        .play-button {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #6c6f7d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .play-icon {
+            font-size: 1.5rem;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Central Welcome Text -->
-        <div class="center-text">
-            WELCOME TO OUR LANGUAGE<br>
-            LEARNING APP
+        <div class="text centered">WELCOME TO OUR LANGUAGE LEARNING APP</div>
+        <div class="text rotate1">Welina mai i kā mākou polokalamu aʻo ʻōlelo</div>
+        <div class="text rotate2">добро пожаловать в наше приложение для изучения языка</div>
+        <div class="text rotate3">bienvenue sur notre application d'apprentissage des langues</div>
+        <div class="text rotate4">歡迎使用我們的語言學習應用程式</div>
+        <div class="text rotate5">Selamat datang ke aplikasi pembelajaran bahasa</div>
+        <!-- Add more text elements here as needed -->
+        
+        <div class="play-button">
+            <i class="play-icon">▶</i>
         </div>
-        <!-- Play button -->
-        <div class="play-button-bg"></div>
-        <div class="play-button-inner"></div>
-
-        <!-- Rotated Text Elements -->
-        <div class="text-rotated text1">Welina mai i kā polokalamu aʻo ʻōlelo</div>
-        <div class="text-rotated text2">Velkomin í tungumálanámsforritið okkar</div>
-        <div class="text-rotated text3">歡迎使用我們的語言學習應用</div>
-        <div class="text-rotated text4">bienvenue sur notre application d’apprentissage des langues</div>
-        <div class="text-rotated text5">selamat datang ke aplikasi pembelajaran bahasa</div>
-        <div class="text-rotated text6">言語学習アプリへようこそ</div>
-        <div class="text-rotated text7">ברוכים הבאים לאפליקציית לימוד השפה שלנו</div>
-        <div class="text-rotated text8">Добро пожаловать в наше приложение для изучения языка</div>
-        <div class="text-rotated text9">chào mừng bạn đến với ứng dụng học ngôn ngữ của chúng tôi</div>
-        <div class="text-rotated text10">bien-vindo ao nosso aplicativo de aprendizagem de idiomas</div>
     </div>
 </body>
 </html>
