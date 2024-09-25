@@ -1,98 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Learning App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .custom-font {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
         }
-        body {
-            background-color: #2e3340;
-            font-family: Arial, sans-serif;
-            color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .text-gray {
+            color: #9899A2;
         }
-        .container {
-            position: relative;
-            width: 80%;
-            height: 80%;
-        }
-        .text {
-            position: absolute;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-        .centered {
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        .rotate1 {
-            top: 10%;
-            left: 10%;
-            transform: rotate(-45deg);
-        }
-        .rotate2 {
-            top: 20%;
-            right: 20%;
-            transform: rotate(90deg);
-        }
-        .rotate3 {
-            bottom: 10%;
-            left: 25%;
-            transform: rotate(-15deg);
-        }
-        .rotate4 {
-            bottom: 15%;
-            right: 15%;
-            transform: rotate(30deg);
-        }
-        .rotate5 {
-            top: 5%;
-            right: 5%;
-            transform: rotate(-75deg);
-        }
-        .play-button {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #6c6f7d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        .play-icon {
-            font-size: 1.5rem;
-            color: white;
+        .text-light-green {
+            color: #B8D1BF;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="text centered">WELCOME TO OUR LANGUAGE LEARNING APP</div>
-        <div class="text rotate1">Welina mai i kā mākou polokalamu aʻo ʻōlelo</div>
-        <div class="text rotate2">добро пожаловать в наше приложение для изучения языка</div>
-        <div class="text rotate3">bienvenue sur notre application d'apprentissage des langues</div>
-        <div class="text rotate4">歡迎使用我們的語言學習應用程式</div>
-        <div class="text rotate5">Selamat datang ke aplikasi pembelajaran bahasa</div>
-        <!-- Add more text elements here as needed -->
-        
-        <div class="play-button">
-            <i class="play-icon">▶</i>
+<body class="bg-gray-800 text-white flex items-center justify-center" style="width: 1728px; height: 1117px;">
+    <div class="relative w-full h-full flex items-center justify-center">
+        <div class="absolute top-10 left-10 transform rotate-0">
+            <p class="text-2xl custom-font text-gray">Welina mai i kā mākou polokalamu aʻo ʻōlelo</p>
+        </div>
+        <div class="absolute top-20 left-1/2 transform -translate-x-1/2 rotate-90">
+            <p class="text-2xl custom-font text-gray">Selamat datang ke aplikasi pembelajaran bahasa</p>
+        </div>
+        <div class="absolute top-10 right-10 transform rotate-0">
+            <p class="text-2xl custom-font text-gray">欢迎使用我们的语言学习应用</p>
+        </div>
+        <div class="absolute top-1/2 left-10 transform -translate-y-1/2 -rotate-90">
+            <p class="text-3xl custom-font text-gray">velkomin í tungumálanámsforritið okkar</p>
+        </div>
+        <div class="absolute top-1/2 right-10 transform -translate-y-1/2 rotate-90">
+            <p class="text-2xl custom-font text-light-green">bem-vindo ao nosso aplicativo de aprendizagem de idiomas</p>
+        </div>
+        <div class="absolute bottom-10 left-10 transform rotate-0">
+            <p class="text-3xl custom-font text-light-green">ยินดีต้อนรับสู่แอปการเรียนรู้ภาษา</p>
+        </div>
+        <div class="absolute bottom-10 right-10 transform rotate-0">
+            <p class="text-2xl custom-font text-gray">bienvenue sur notre application d'apprentissage des langues</p>
+        </div>
+        <div class="absolute bottom-1/2 left-10 transform translate-y-1/2 rotate-90 w-48">
+            <p class="text-2xl custom-font text-light-green">chào mừng bạn đến với ứng dụng học ngôn ngữ của chúng tôi</p>
+        </div>
+        <div class="absolute bottom-1/2 right-10 transform translate-y-1/2 -rotate-90">
+            <p class="text-2xl custom-font text-gray">言語学習アプリへようこそ</p>
+        </div>
+        <div class="absolute top-1/4 left-1/4 transform -rotate-45 w-48">
+            <p class="text-2xl custom-font text-gray">환영합니다 우리의 언어 학습 앱에</p>
+        </div>
+        <div class="absolute top-1/4 right-1/4 transform rotate-45 w-48">
+            <p class="text-3xl custom-font text-gray">Witamy w naszej aplikacji do nauki języków</p>
+        </div>
+        <div class="absolute bottom-1/4 left-1/4 transform rotate-45">
+            <p class="text-3xl custom-font text-light-green">به برنامه یادگیری زبان ما خوش آمدید</p>
+        </div>
+        <div class="absolute bottom-1/4 right-1/4 transform -rotate-45">
+            <p class="text-2xl custom-font text-gray">barika da zuwa app na koyon harshe</p>
+        </div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+            <p class="text-3xl font-bold">WELCOME TO OUR LANGUAGE</p>
+            <p class="text-3xl font-bold">LEARNING APP</p>
+        </div>
+        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+            <button class="bg-gray-600 p-4 rounded-full flex items-center justify-center" style="width: 80px; height: 80px;">
+                <i class="fas fa-play text-2xl"></i>
+            </button>
         </div>
     </div>
 </body>
