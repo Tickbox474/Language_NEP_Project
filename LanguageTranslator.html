@@ -1,29 +1,44 @@
-<div style="width: 1728px; height: 1117px; position: relative; background: #313446">
-  <div style="width: 91px; height: 78px; left: 1572px; top: 1695px; position: absolute">
-    <div style="width: 37.92px; height: 16.25px; left: 26.54px; top: 32.50px; position: absolute; background: #1D1B20"></div>
-  </div>
-  <div style="width: 91px; height: 78px; left: 1572px; top: 2183px; position: absolute">
-    <div style="width: 37.92px; height: 16.25px; left: 26.54px; top: 32.50px; position: absolute; background: #1D1B20"></div>
-  </div>
-  <div style="width: 1020px; height: 158px; left: 370px; top: -52px; position: absolute; background: white; border: 10px black solid"></div>
-  <div style="left: 432px; top: 27px; position: absolute; text-align: center; color: black; font-size: 70px; font-family: Inter; font-style: italic; font-weight: 900; line-height: 29px; word-wrap: break-word">LANGUAGE TRANSLATOR</div>
-  <div style="width: 288px; height: 114px; left: 739px; top: 137px; position: absolute; background: white; border-radius: 30px; border: 10px black solid"></div>
-  <div style="width: 567px; height: 761px; left: 56px; top: 296px; position: absolute; background: #D9CBCB; border-radius: 30px; border: 10px black solid"></div>
-  <div style="width: 567px; height: 761px; left: 56px; top: 296px; position: absolute; background: white; border-radius: 30px; border: 10px black solid"></div>
-  <div style="width: 144px; height: 64px; left: 808px; top: 178px; position: absolute; text-align: center; color: black; font-size: 34px; font-family: Inter; font-style: italic; font-weight: 700; line-height: 25px; word-wrap: break-word">TO</div>
-  <div style="left: 145px; top: 346px; position: absolute; text-align: center; color: rgba(0, 0, 0, 0.33); font-size: 34px; font-family: Inter; font-style: italic; font-weight: 700; line-height: 25px; word-wrap: break-word">INSERT TEXT HERE...</div>
-  <div style="width: 567px; height: 761px; left: 1107px; top: 296px; position: absolute; background: white; border-radius: 30px; border: 10px black solid"></div>
-  <div style="left: 1133px; top: 346px; position: absolute; text-align: center; color: rgba(0, 0, 0, 0.33); font-size: 34px; font-family: Inter; font-style: italic; font-weight: 700; line-height: 25px; word-wrap: break-word">INSERT TEXT HERE...</div>
-  <div style="width: 376px; height: 117px; padding-left: 20px; padding-right: 20px; padding-top: 14px; padding-bottom: 14px; left: 56px; top: 134px; position: absolute; background: white; border-radius: 30px; border: 10px black solid; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-    <div style="width: 477px; height: 47px; text-align: center; color: black; font-size: 34px; font-family: Inter; font-style: italic; font-weight: 700; line-height: 25px; word-wrap: break-word">Select language</div>
-    <div style="width: 31px; height: 16px; background: #1D1B20"></div>
-  </div>
-  <div style="width: 376px; height: 117px; padding-left: 20px; padding-right: 20px; padding-top: 14px; padding-bottom: 14px; left: 1298px; top: 136px; position: absolute; background: white; border-radius: 30px; border: 10px black solid; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-    <div style="width: 477px; height: 47px; text-align: center; color: black; font-size: 34px; font-family: Inter; font-style: italic; font-weight: 700; line-height: 25px; word-wrap: break-word">Select language</div>
-    <div style="width: 31px; height: 16px; background: #1D1B20"></div>
-  </div>
-  <div style="width: 202px; height: 106px; left: -100px; top: -15px; position: absolute; background: white; border-radius: 30px; border: 10px black solid"></div>
-  <div style="width: 99px; height: 93px; left: 1px; top: 0px; position: absolute">
-    <div style="width: 63.50px; height: 50px; left: 7px; top: 14.50px; position: absolute; border: 1px black solid"></div>
-  </div>
-</div>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #2C2F48;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="bg-white p-4 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center mb-4">
+            <div class="w-6 h-6 border-2 border-black"></div>
+            <h1 class="text-3xl font-bold text-center">LANGUAGE TRANSLATOR</h1>
+            <div class="w-6 h-6 border-2 border-black"></div>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+            <div class="flex flex-col items-center">
+                <div class="bg-white p-2 rounded-lg shadow-lg mb-2">
+                    <span class="font-bold">Select language</span>
+                    <i class="fas fa-minus ml-2"></i>
+                </div>
+                <textarea class="w-64 h-64 p-4 border-2 border-black rounded-lg" placeholder="INSERT TEXT HERE..."></textarea>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="bg-white p-2 rounded-lg shadow-lg mb-2">
+                    <span class="font-bold">TO</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="bg-white p-2 rounded-lg shadow-lg mb-2">
+                    <span class="font-bold">Select language</span>
+                    <i class="fas fa-minus ml-2"></i>
+                </div>
+                <textarea class="w-64 h-64 p-4 border-2 border-black rounded-lg" placeholder="INSERT TEXT HERE..."></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
