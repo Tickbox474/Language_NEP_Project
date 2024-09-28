@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Include Tailwind CSS CDN -->
+    <title>Language Translator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Include Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            z-index: 10;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
 <body class="bg-gray-800 flex flex-col items-center justify-center min-h-screen">
     <div class="w-full max-w-4xl">
-        <!-- Header Section -->
         <div class="flex justify-between items-center mb-4">
             <button class="text-white text-2xl">
                 <i class="fas fa-arrow-left"></i>
@@ -16,98 +27,102 @@
             <h1 class="text-white text-3xl font-bold">LANGUAGE TRANSLATOR</h1>
             <div></div>
         </div>
-
-        <!-- Main Content Section -->
-        <div class="flex justify-between items-center">
-            <!-- Source Language Column -->
+        <div class="flex justify-between items-start">
+            <!-- Source Language Section -->
             <div class="flex flex-col items-center">
                 <!-- Source Language Dropdown -->
-                <div class="relative">
-                    <button id="sourceLanguageButton" onclick="toggleDropdown('sourceLanguageDropdown')" class="bg-white text-black font-semibold py-2 px-4 rounded-full shadow-md">
-                        Select language <i class="fas fa-caret-down"></i>
+                <div class="relative dropdown">
+                    <button id="sourceLanguageButton" class="bg-white text-black font-semibold py-2 px-4 rounded-full shadow-md flex items-center">
+                        <span id="sourceLanguage">Select language</span> <i class="fas fa-caret-down ml-2"></i>
                     </button>
-                    <!-- Dropdown Content -->
-                    <div id="sourceLanguageDropdown" class="absolute mt-2 w-full bg-white rounded-md shadow-lg hidden">
+                    <div class="absolute mt-2 w-40 bg-white rounded-md shadow-lg dropdown-content">
                         <ul class="py-1">
-                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('sourceLanguageButton', 'sourceLanguageDropdown', 'Mandarin')">Mandarin</li>
-                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('sourceLanguageButton', 'sourceLanguageDropdown', 'English')">English</li>
-                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('sourceLanguageButton', 'sourceLanguageDropdown', 'Malay')">Malay</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('source', 'auto', 'Auto Detect')">Auto Detect</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('source', 'en', 'English')">English</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('source', 'zh', 'Mandarin')">Mandarin</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('source', 'ms', 'Malay')">Malay</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Source Text Area -->
+                <!-- Source Textarea -->
                 <div class="mt-4 bg-white w-64 h-96 rounded-lg shadow-md p-4">
-                    <textarea id="sourceText" class="w-full h-full resize-none outline-none" placeholder="Insert text here..."></textarea>
+                    <textarea id="sourceText" class="w-full h-full bg-transparent outline-none resize-none" placeholder="Enter text here..."></textarea>
                 </div>
             </div>
-
-            <!-- Translate Button Column -->
-            <div class="flex flex-col items-center">
-                <button onclick="translateText()" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full shadow-md">
-                    Translate
+            <!-- Middle Section -->
+            <div class="flex flex-col items-center mx-4">
+                <button id="translateButton" onclick="translateText()" class="bg-white text-black font-semibold py-2 px-4 rounded-full shadow-md">
+                    TRANSLATE
                 </button>
             </div>
-
-            <!-- Target Language Column -->
+            <!-- Target Language Section -->
             <div class="flex flex-col items-center">
                 <!-- Target Language Dropdown -->
-                <div class="relative">
-                    <button id="targetLanguageButton" onclick="toggleDropdown('targetLanguageDropdown')" class="bg-white text-black font-semibold py-2 px-4 rounded-full shadow-md">
-                        Select language <i class="fas fa-caret-down"></i>
+                <div class="relative dropdown">
+                    <button id="targetLanguageButton" class="bg-white text-black font-semibold py-2 px-4 rounded-full shadow-md flex items-center">
+                        <span id="targetLanguage">Select language</span> <i class="fas fa-caret-down ml-2"></i>
                     </button>
-                    <!-- Dropdown Content -->
-                    <div id="targetLanguageDropdown" class="absolute mt-2 w-full bg-white rounded-md shadow-lg hidden">
+                    <div class="absolute mt-2 w-40 bg-white rounded-md shadow-lg dropdown-content">
                         <ul class="py-1">
-                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('targetLanguageButton', 'targetLanguageDropdown', 'Mandarin')">Mandarin</li>
-                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('targetLanguageButton', 'targetLanguageDropdown', 'English')">English</li>
-                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('targetLanguageButton', 'targetLanguageDropdown', 'Malay')">Malay</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('target', 'en', 'English')">English</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('target', 'zh', 'Mandarin')">Mandarin</li>
+                            <li class="px-4 py-2 text-black font-bold cursor-pointer hover:bg-gray-200" onclick="selectLanguage('target', 'ms', 'Malay')">Malay</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Target Text Area -->
+                <!-- Target Textarea -->
                 <div class="mt-4 bg-white w-64 h-96 rounded-lg shadow-md p-4">
-                    <textarea id="translatedText" class="w-full h-full resize-none outline-none" placeholder="Translation will appear here..." readonly></textarea>
+                    <textarea id="targetText" class="w-full h-full bg-transparent outline-none resize-none" readonly></textarea>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- JavaScript Functions -->
     <script>
-        // Function to toggle the visibility of dropdown menus
-        function toggleDropdown(dropdownId) {
-            document.getElementById(dropdownId).classList.toggle('hidden');
+        let sourceLang = 'auto';
+        let targetLang = '';
+
+        function selectLanguage(type, code, displayName) {
+            if (type === 'source') {
+                sourceLang = code;
+                document.getElementById('sourceLanguage').innerText = displayName;
+            } else if (type === 'target') {
+                targetLang = code;
+                document.getElementById('targetLanguage').innerText = displayName;
+            }
         }
 
-        // Function to handle language selection
-        function selectLanguage(buttonId, dropdownId, language) {
-            document.getElementById(buttonId).innerHTML = language + ' <i class="fas fa-caret-down"></i>';
-            document.getElementById(dropdownId).classList.add('hidden');
-        }
-
-        // Function to simulate text translation
-        function translateText() {
-            var sourceText = document.getElementById('sourceText').value;
-            var sourceLanguage = document.getElementById('sourceLanguageButton').innerText.trim();
-            var targetLanguage = document.getElementById('targetLanguageButton').innerText.trim();
-
-            // Input validation
-            if (sourceText === '') {
+        async function translateText() {
+            const text = document.getElementById('sourceText').value.trim();
+            if (!text) {
                 alert('Please enter text to translate.');
                 return;
             }
-            if (sourceLanguage === 'Select language') {
-                alert('Please select the source language.');
-                return;
-            }
-            if (targetLanguage === 'Select language') {
-                alert('Please select the target language.');
+            if (!targetLang) {
+                alert('Please select a target language.');
                 return;
             }
 
-            // Simulate translation (for demonstration purposes)
-            var translatedText = sourceText.split('').reverse().join('');
-            document.getElementById('translatedText').value = translatedText;
+            try {
+              const res = await fetch("https://libretranslate.com/translate", {
+  method: "POST",
+  body: JSON.stringify({
+    q: '<p class="green">Hello!</p>',
+    source: "en",
+    target: "es",
+    format: "html"
+  }),
+  headers: { "Content-Type": "application/json" }
+});
+
+console.log(await res.json());
+  
+
+                const data = await res.json();
+                document.getElementById('targetText').value = data.translatedText;
+            } catch (error) {
+                console.error(error);
+                alert('An error occurred during translation.');
+            }
         }
     </script>
 </body>
