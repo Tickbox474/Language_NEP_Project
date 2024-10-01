@@ -3,10 +3,7 @@
 <head>
     <title>Language Translator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
         .dropdown-content {
             display: none;
@@ -77,17 +74,18 @@
             </div>
         </div>
     </div>
+
     <script>
-        let sourceLang = 'auto';
-        let targetLang = '';
+        let sourceLang = 'auto';  // Default source language (auto-detection)
+        let targetLang = '';  // Empty target language (to be set by user)
 
         function selectLanguage(type, code, displayName) {
             if (type === 'source') {
-                sourceLang = code;
-                document.getElementById('sourceLanguage').innerText = displayName;
+                sourceLang = code;  // Set the source language based on user selection
+                document.getElementById('sourceLanguage').innerText = displayName;  // Update the display text
             } else if (type === 'target') {
-                targetLang = code;
-                document.getElementById('targetLanguage').innerText = displayName;
+                targetLang = code;  // Set the target language based on user selection
+                document.getElementById('targetLanguage').innerText = displayName;  // Update the display text
             }
         }
 
@@ -95,30 +93,34 @@
             const text = document.getElementById('sourceText').value.trim();
             if (!text) {
                 alert('Please enter text to translate.');
-                return;
+                return;  // Stop if no text is entered
             }
             if (!targetLang) {
                 alert('Please select a target language.');
-                return;
+                return;  // Stop if no target language is selected
             }
 
             try {
-              const res = await fetch("https://libretranslate.com/translate", {
-  method: "POST",
-  body: JSON.stringify({
-    q: '<p class="green">Hello!</p>',
-    source: "en",
-    target: "es",
-    format: "html"
-  }),
-  headers: { "Content-Type": "application/json" }
-});
+                // Make a POST request to the Flask backend
+                const res = await fetch('http://127.0.0.1:5000/translate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text: text,               // Input text from user
+                        source: sourceLang,        // Source language selected
+                        target: targetLang         // Target language selected
+                    })
+                });
 
-console.log(await res.json());
-  
+                const data = await res.json();  // Parse the JSON response
+                console.log(data);  // Log the response to check
 
-                const data = await res.json();
-                document.getElementById('targetText').value = data.translatedText;
+                // Check if 'translatedText' exists in the response and update the target textarea
+                if (data.translatedText) {
+                    document.getElementById('targetText').value = data.translatedText;
+                } else {
+                    document.getElementById('targetText').value = 'Translation error';  // If no translation found, display error
+                }
             } catch (error) {
                 console.error(error);
                 alert('An error occurred during translation.');
@@ -127,3 +129,4 @@ console.log(await res.json());
     </script>
 </body>
 </html>
+
