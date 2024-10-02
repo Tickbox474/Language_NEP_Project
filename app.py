@@ -19,7 +19,7 @@ def translate():
         return jsonify({'error': 'Invalid input'}), 400  # Handle missing input
 
     try:
-        # Translate the text using googletrans
+        # Translate the text using googletrans (might be the problem here)
         translation = translator.translate(text, src=source, dest=target)
         return jsonify({'translatedText': translation.text})  # Send back the translated text
     except Exception as e:
