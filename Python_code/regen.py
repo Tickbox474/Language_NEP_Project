@@ -8,3 +8,4 @@ def generate_random_pass(length=15):
 
 new_number = generate_random_pass()
 print(f"Your new password would be: \033[4m{new_number}\033[0m")
+print("Please keep this safe somewhere")
