@@ -18,9 +18,20 @@
 <body class="bg-gray-800 flex flex-col items-center justify-center min-h-screen">
     <div class="w-full max-w-4xl">
         <div class="flex justify-between items-center mb-4">
-            <button class="text-white text-2xl">
+            
+            <!-- Back Button -->
+            <button class="text-white text-2xl" onclick="goBack()">    
                 <i class="fas fa-arrow-left"></i>
             </button>
+            <script>
+                function goBack() {
+                    if(window.history.length > 1) {
+                        window.history.back();
+                    } else {
+                        window.location.href='Mainmenu.html';
+                    }
+                }
+            </script>
             <h1 class="text-white text-3xl font-bold">LANGUAGE TRANSLATOR</h1>
             <div></div>
         </div>
