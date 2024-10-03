@@ -1,41 +1,30 @@
-import os
-from flask import Flask, request, redirect, url_for, render_template
-from werkzeug.utils import secure_filename
+from flask import Flask, render_template, request, jsonify
+from googletrans import Translator
 
 app = Flask(__name__)
+translator = Translator()
 
-# Set the upload folder and allowed file types
-UPLOAD_FOLDER = 'static/uploads/'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# Function to check if file type is allowed
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+# Route to serve the HTML page
 @app.route('/')
 def index():
-    return render_template('upload.html')
+    return render_template('index.html')
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'image' not in request.files:
-        return 'No file part'
+# Route to handle translation
+@app.route('/translate', methods=['POST'])
+def translate_text():
+    data = request.get_json()
+    text = data.get('text')
+    source_lang = data.get('source_language')
+    target_lang = data.get('target_language')
     
-    file = request.files['image']
+    if not text or not target_lang:
+        return jsonify({'error': 'Missing text or target language'}), 400
+
+    # Perform translation
+    translation = translator.translate(text, src=source_lang, dest=target_lang)
     
-    if file.filename == '':
-        return 'No selected file'
-    
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return f'File successfully uploaded: <a href="/static/uploads/{filename}">{filename}</a>'
-    
-    return 'Invalid file type'
+    # Return the translated text as JSON
+    return jsonify({'translated_text': translation.text})
 
 if __name__ == '__main__':
-    # Ensure the upload folder exists
-    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     app.run(debug=True)
-

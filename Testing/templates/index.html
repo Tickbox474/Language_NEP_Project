@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <style>
+        body {
+            background-color: #1c1e26;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin: 100px auto;
+            width: 80%;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin: 20px 0;
+            padding: 10px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LANGUAGE TRANSLATOR</h1>
+        <form id="translateForm" method="POST">
+            <div>
+                <select id="sourceLang" name="sourceLang">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <!-- Add other language options here -->
+                </select>
+                <textarea id="sourceText" name="sourceText" placeholder="Enter text here..."></textarea>
+            </div>
+            <button type="submit">TRANSLATE</button>
+            <div>
+                <select id="targetLang" name="targetLang">
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <!-- Add other language options here -->
+                </select>
+                <textarea id="translatedText" name="translatedText" readonly></textarea>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('translateForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from reloading the page
+    
+            const sourceText = document.getElementById('sourceText').value;
+            const sourceLang = document.getElementById('sourceLang').value;
+            const targetLang = document.getElementById('targetLang').value;
+    
+            // Send a request to the Flask server with the text and language info
+            fetch('http://127.0.0.1:5000/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    text: sourceText,
+                    source_language: sourceLang,
+                    target_language: targetLang
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Check if the response has the translated text
+                if (data.translated_text) {
+                    // Update the translated text area with the translated text
+                    document.getElementById('translatedText').value = data.translated_text;
+                } else if (data.error) {
+                    // Handle any errors returned from the server
+                    document.getElementById('translatedText').value = `Error: ${data.error}`;
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
