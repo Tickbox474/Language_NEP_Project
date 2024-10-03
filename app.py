@@ -1,29 +1,41 @@
-from flask import Flask, request, jsonify
-from googletrans import Translator
-from flask_cors import CORS
+import os
+from flask import Flask, request, redirect, url_for, render_template
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
 
-app = Flask(__name__)
-translator = Translator()
+# Set the upload folder and allowed file types
+UPLOAD_FOLDER = 'static/uploads/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/translate', methods=['POST'])
-def translate():
-    data = request.json  # Get the JSON data from the request
-    text = data.get('text')  # Extract the text to be translated
-    source = data.get('source')  # Extract the source language code
-    target = data.get('target')  # Extract the target language code
+# Function to check if file type is allowed
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-    if not text or not target:
-        return jsonify({'error': 'Invalid input'}), 400  # Handle missing input
+@app.route('/')
+def index():
+    return render_template('upload.html')
 
-    try:
-        # Translate the text using googletrans (might be the problem here)
-        translation = translator.translate(text, src=source, dest=target)
-        return jsonify({'translatedText': translation.text})  # Send back the translated text
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500  # Handle any errors
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'image' not in request.files:
+        return 'No file part'
+    
+    file = request.files['image']
+    
+    if file.filename == '':
+        return 'No selected file'
+    
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return f'File successfully uploaded: <a href="/static/uploads/{filename}">{filename}</a>'
+    
+    return 'Invalid file type'
 
 if __name__ == '__main__':
+    # Ensure the upload folder exists
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     app.run(debug=True)
+
