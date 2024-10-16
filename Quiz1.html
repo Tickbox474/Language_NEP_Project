@@ -3,41 +3,74 @@
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
  </head>
  <body class="bg-gray-800 flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-md mx-auto text-center">
-   <div class="flex justify-between items-center p-4">
-    <button class="text-white text-2xl">
-     <a class="fas fa-arrow-left" href='Mainmenu.html'>
-     </a>
-    </button>
-    <div class="bg-white text-black font-bold text-xl px-4 py-2 rounded">
+  <div class="w-full max-w-md p-4">
+   <div class="flex justify-between items-center mb-4">
+    <div class="bg-white text-black font-bold text-center py-2 px-4">
      LANGUAGE QUIZ
     </div>
     <div class="flex items-center">
-     <span class="text-white text-lg mr-2">
+     <span class="text-white mr-2">
       SPANISH
      </span>
-     <img alt="Spanish flag" class="w-10 h-6" height="25" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-YmCBE19MK7He6gciQ1l0agne.png?st=2024-09-28T00%3A57%3A37Z&amp;se=2024-09-28T02%3A57%3A37Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-28T00%3A52%3A09Z&amp;ske=2024-09-29T00%3A52%3A09Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=mhY0Dh3%2BXYSrgkmbJRqe3INFzKFGDdK3v7rKdSFo2rk%3D" width="40"/>
+     <img alt="Spanish flag" class="w-8 h-5" height="20" src="https://storage.googleapis.com/a1aa/image/HM6OCzzBDu6qMdPJ67rxcrh0sgVU0qzR6tcmEJqMkubVcT5E.jpg" width="30"/>
     </div>
    </div>
-   <div class="bg-gray-800 text-white text-2xl font-bold mt-8">
-    What is the translation for "Hello" in Spanish?
+   <div class="text-center text-white text-xl font-bold mb-6">
+    What is the translation for “Hello” in Spanish?
    </div>
-   <div class="grid grid-cols-2 gap-4 mt-8">
-    <button class="bg-gray-300 text-black font-bold py-4 rounded">
+   <div class="grid grid-cols-2 gap-4">
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-1">
      Ciao
     </button>
-    <button class="bg-gray-300 text-black font-bold py-4 rounded">
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-2">
      Adiós
     </button>
-    <button class="bg-gray-300 text-black font-bold py-4 rounded">
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="correct-answer">
      Hola
     </button>
-    <button class="bg-gray-300 text-black font-bold py-4 rounded">
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-3">
      Cómo estás
     </button>
    </div>
+   <div class="flex justify-between items-center mt-4">
+    <a class="text-white text-2xl" href="Mainmenu.html" id="back-button-bottom">
+     <i class="fas fa-arrow-left">
+     </i>
+    </a>
+    <a class="text-white text-2xl" href="quiz2.html" id="next-question-button">
+     <i class="fas fa-arrow-right">
+     </i>
+    </a>
+   </div>
   </div>
+  <script>
+   document.getElementById('correct-answer').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-green-500', 'text-white');
+        });
+
+        document.getElementById('wrong-answer-1').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-red-500', 'text-white');
+        });
+
+        document.getElementById('wrong-answer-2').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-red-500', 'text-white');
+        });
+
+        document.getElementById('wrong-answer-3').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-red-500', 'text-white');
+        });
+  </script>
  </body>
 </html>
