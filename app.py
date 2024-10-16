@@ -1,31 +1,32 @@
-from flask import Flask, render_template, request, jsonify
-from googletrans import Translator
-
+from flask import Flask, request, jsonify
+from translate import Translator
+from flask_cors import CORS
 
 app = Flask(__name__)
-translator = Translator()
+CORS(app)
 
-# Route to serve the HTML page
-@app.route('/')
-def index():
-    return render_template('index.html')
 
-# Route to handle translation
 @app.route('/translate', methods=['POST'])
 def translate_text():
-    data = request.get_json()
-    text = data.get('text')
-    source_lang = data.get('source_language')
-    target_lang = data.get('target_language')
-    
-    if not text or not target_lang:
-        return jsonify({'error': 'Missing text or target language'}), 400
+    try:
+        # Parse the JSON request body
+        data = request.get_json()
+        text = data.get('text', '').strip()       # Get text input by user
+        source = data.get('source', 'auto')       # Get source language selected
+        target = data.get('target', '')           # Get target language selected
 
-    # Perform translation
-    translation = translator.translate(text, src=source_lang, dest=target_lang)
-    
-    # Return the translated text as JSON
-    return jsonify({'translated_text': translation.text})
+        if not text:
+            return jsonify({'error': 'No text provided'}), 400
+        if not target:
+            return jsonify({'error': 'No target language provided'}), 400
+
+        # Translate the text
+        translator = Translator(from_lang=source, to_lang=target)
+        translated_text = translator.translate(text)
+
+        return jsonify({'translatedText': translated_text})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
