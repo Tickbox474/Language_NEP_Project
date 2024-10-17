@@ -1,0 +1,78 @@
+<html>
+ <head>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-800 flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-md p-4">
+   <div class="flex justify-between items-center mb-4">
+    <div class="bg-white text-black font-bold text-center py-2 px-4">
+     LANGUAGE QUIZ
+    </div>
+    <div class="flex items-center">
+     <span class="text-white mr-2">
+      SPANISH
+     </span>
+     <img alt="Spanish flag" class="w-8 h-5" height="20" src="https://storage.googleapis.com/a1aa/image/HM6OCzzBDu6qMdPJ67rxcrh0sgVU0qzR6tcmEJqMkubVcT5E.jpg" width="30"/>
+    </div>
+   </div>
+   <div class="text-center text-white text-xl font-bold mb-6">
+    Complete the sentence below:
+    <br/>
+    hola como ____ hoy?
+   </div>
+   <div class="grid grid-cols-2 gap-4">
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="correct-answer">
+     Estas
+    </button>
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-1">
+     Eres
+    </button>
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-2">
+     Tienes
+    </button>
+    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-3">
+     Haces
+    </button>
+   </div>
+   <div class="flex justify-between items-center mt-4">
+    <a class="text-white text-2xl" href="quiz1.html" id="back-button-bottom">
+     <i class="fas fa-arrow-left">
+     </i>
+    </a>
+    <a class="text-white text-2xl" href="Mainmenu.html" id="next-question-button">
+     <i class="fas fa-arrow-right">
+     </i>
+    </a>
+   </div>
+  </div>
+  <script>
+   document.getElementById('correct-answer').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-green-500', 'text-white');
+        });
+
+        document.getElementById('wrong-answer-1').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-red-500', 'text-white');
+        });
+
+        document.getElementById('wrong-answer-2').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-red-500', 'text-white');
+        });
+
+        document.getElementById('wrong-answer-3').addEventListener('click', function() {
+            this.classList.remove('bg-gray-300', 'text-black');
+            this.classList.add('bg-red-500', 'text-white');
+        });
+  </script>
+ </body>
+</html>

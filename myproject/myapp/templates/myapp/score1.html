@@ -1,0 +1,162 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Scoreboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+        body {
+            font-family: 'Fredoka One', cursive;
+            background-color: #000036;
+        }
+
+        .star {
+            animation: sparkle 1s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.3);
+            }
+        }
+
+        .bounce {
+            animation: bounce 0.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body class="p-4">
+    <!-- Scoreboard Container -->
+    <div class="max-w-2xl mx-auto bg-blue-200 rounded-lg p-4 relative shadow-lg">
+        <div class="absolute top-0 left-0 right-0 flex justify-center mt-[-20px]">
+            <div class="bg-red-500 text-white text-3xl px-6 py-2 rounded-full bounce">
+                SCOREBOARD
+            </div>
+        </div>
+
+        <!--- Back Button -->
+        <button class="text-white text-2xl" onclick="goBack()">    
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <script>
+            function goBack() {
+                if(window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href='Mainmenu.html';
+                }
+            }
+        </script>
+
+        <!-- Player Info and Score -->
+        <div class="flex justify-between items-center mt-8">
+            <div class="relative">
+                <img alt="Cartoon boy" class="rounded-full border-4 border-pink-500" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/8foEHeGsi4jZYEVVjctRG9UEQZEbKfmyo3XnMaSiAo4ebnKOB.jpg"
+                    width="100" />
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="text-white text-lg">Player 1</div>
+                <div class="text-yellow-500 text-2xl mt-2">1234 pts</div>
+            </div>
+            <div class="relative">
+                <img alt="Smiling star" class="rounded-full border-4 border-yellow-500" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/k5iVAgYOLiYJGVr09bfu47FH0yPFdCxV6Y8hyUIU4XCf2piTA.jpg"
+                    width="100" />
+            </div>
+        </div>
+
+        <!-- Levels and Progress Bars -->
+        <div class="text-center text-white text-xl mt-6">Level Progress</div>
+        <div class="mt-4 space-y-2">
+            <div class="flex items-center space-x-2">
+                <div class="bg-yellow-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded">L1</div>
+                <div class="flex-1 bg-gray-300 rounded-full h-4 overflow-hidden">
+                    <div class="bg-green-500 h-full" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-yellow-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded">L2</div>
+                <div class="flex-1 bg-gray-300 rounded-full h-4 overflow-hidden">
+                    <div class="bg-blue-500 h-full" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-yellow-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded">L3</div>
+                <div class="flex-1 bg-gray-300 rounded-full h-4 overflow-hidden">
+                    <div class="bg-red-500 h-full" style="width: 40%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Star Rating Section -->
+        <div class="flex justify-center space-x-2 mt-6">
+            <div class="star bg-yellow-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded-full">★
+            </div>
+            <div class="star bg-green-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded-full">★
+            </div>
+            <div class="star bg-blue-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded-full">★
+            </div>
+            <div class="star bg-red-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded-full">★
+            </div>
+            <div class="star bg-yellow-500 text-white text-lg w-10 h-10 flex items-center justify-center rounded-full">★
+            </div>
+        </div>
+
+        <!-- Leaderboard Section -->
+        <div class="text-center text-white text-xl mt-8">Leaderboard</div>
+        <div class="bg-white rounded-lg shadow-lg mt-4 p-4">
+            <div class="flex justify-between items-center text-lg mb-2">
+                <span class="font-bold text-blue-500">#1 John</span>
+                <span class="text-green-500">1500 pts</span>
+            </div>
+            <div class="flex justify-between items-center text-lg mb-2">
+                <span class="font-bold text-blue-500">#2 Alice</span>
+                <span class="text-green-500">1400 pts</span>
+            </div>
+            <div class="flex justify-between items-center text-lg mb-2">
+                <span class="font-bold text-blue-500">#3 Sam</span>
+                <span class="text-green-500">1300 pts</span>
+            </div>
+        </div>
+
+        <!-- Confetti Effect for Milestone Achievement -->
+        <div id="confetti" class="hidden">
+            🎉🎉 Congratulations! 🎉🎉
+        </div>
+
+    </div>
+
+    <script>
+        // Simulating confetti when milestone reached
+        const confetti = document.getElementById('confetti');
+        setTimeout(() => {
+            confetti.classList.remove('hidden');
+            setTimeout(() => {
+                confetti.classList.add('hidden');
+            }, 3000);
+        }, 5000); // Show confetti after 5 seconds as an example
+    </script>
+
+</body>
+</html>
