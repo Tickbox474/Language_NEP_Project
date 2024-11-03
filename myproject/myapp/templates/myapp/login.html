@@ -1,13 +1,11 @@
 <html>
  <head>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
    body {
             font-family: 'Roboto', sans-serif;
-            /* Add this to make the body take up the full height of the viewport */
             height: 100vh;
             margin: 0;
         }
@@ -20,68 +18,59 @@
    </h1>
    <div class="flex items-center mb-8">
     <img alt="MultiLang logo with various chat icons and a globe" class="w-48 h-48" height="150" src="">
-    </div>
-   <form class="w-full max-w-sm">
+   </div>
+
+   <!-- Form section -->
+   <form class="w-full max-w-sm" method="post">
+    {% csrf_token %}
     <div class="mb-4">
      <label class="block text-teal-400 text-sm font-bold mb-2" for="username">
       EMAIL/USERNAME
      </label>
-     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" placeholder="Enter Username" type="text"/>
+     <!-- Django username field -->
+     {{ form.username }}
     </div>
     <div class="mb-6">
      <label class="block text-teal-400 text-sm font-bold mb-2" for="password">
       PASSWORD
      </label>
-     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="Enter Password" type="password"/>
+     <!-- Django password field -->
+     {{ form.password }}
     </div>
+
+    <!-- Login Button -->
     <div class="flex items-center justify-between mb-4">
-     <a class="inline-block align-baseline font-bold text-sm text-gray-400 hover:text-gray-500" href='Forgot_pass.html'>
-      FORGOT PASSWORD?
-     </a>
-    </div>
-    <div class="flex items-center justify-between mb-4">
-     <button class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="login-btn">
+     <button class="bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
       LOGIN
      </button>
     </div>
 
-    <!-- Google (using the a style in html) -->
+    <!-- Social Media Links (Optional) -->
     <div class="flex items-center justify-center mb-4">
-     <button class="bg-white text-gray-800 font-bold py-2 px-4 rounded-full mx-1" type="button" onclick="window.location.href='https://mail.google.com';">
-      <i class="fab fa-google">
-      </i> 
-     </button>
-     
-     <div class="flex items-center justify-center mb-4">
-      <button class="bg-white text-gray-800 font-bold py-2 px-4 rounded-full mx-1" onclick="window.location.href='https://www.instagram.com/';">
-        <i class="fab fa-instagram">
-        </i>
-
+      <button class="bg-white text-gray-800 font-bold py-2 px-4 rounded-full mx-1" type="button" onclick="window.location.href='https://mail.google.com';">
+        <i class="fab fa-google"></i> 
+      </button>
+      <button class="bg-white text-gray-800 font-bold py-2 px-4 rounded-full mx-1" type="button" onclick="window.location.href='https://www.instagram.com/';">
+        <i class="fab fa-instagram"></i>
       </button>
      </div>
   
      <!-- Facebook -->
       <button class="bg-white text-gray-800 font-bold py-2 px-4 rounded-full mx-1" type="button" onclick="window.location.href='https://www.facebook.com/'">
-      <a class="fab fa-facebook-f">
-      </a>
+        <i class="fab fa-facebook-f"></i>
       </button>
     </div>
 
-    <!-- Resgister -->
+    <!-- Register Link -->
     <div class="text-center">
       <p class="text-gray-400">
         Don't have an account?
-        <a class="text-teal-400 font-bold" href="registerpage.html">
+        <a class="text-teal-400 font-bold" href='Mainmenu.html'> 
           Register here!
         </a>
       </p>
     </div>
    </form>
   </div>
-  <script>
-    document.getElementById('login-btn').addEventListener('click', function() {
-      window.location.href = 'Mainmenu.html';
-    });
-  </script>
  </body>
 </html>
