@@ -1,5 +1,12 @@
 from django.urls import path,include 
+from django.shortcuts import render
 from . import views
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+
+def handler500(request):
+    return render(request, '500.html', status=500) 
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,6 +23,7 @@ urlpatterns = [
     path('score2.html', views.score2, name='score2'),
     path('settings.html', views.settings, name='settings'),
     path('Trail.html', views.trail, name='trail'), 
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
 ]
+
+handler404 = handler404 
+handler500 = handler500

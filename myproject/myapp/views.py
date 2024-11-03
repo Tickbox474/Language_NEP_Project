@@ -7,31 +7,10 @@ def home(request):
     return render(request, 'myapp/WelcomePage.html') 
 
 def login(request):
-    if request.method == 'POST':
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('mainmenu')  # Redirect to the main menu after login
-            else:
-                messages.error(request, 'Invalid username or password.')
-    else:
-        form = LoginForm()
-    return render(request, 'myapp/login.html', {'form': form})     
+    return render(request, 'myapp/login.html')     
 
 def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Registration successful. You can now log in.')
-            return redirect('login')
-    else:
-        form = RegistrationForm()
-    return render(request, 'myapp/registerpage.html', {'form': form})          
+    return render(request, 'myapp/registerpage.html')          
 
 def mainmenu(request):
     return render(request, 'myapp/Mainmenu.html')
