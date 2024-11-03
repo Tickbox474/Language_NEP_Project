@@ -16,4 +16,6 @@ urlpatterns = [
     path('score2.html', views.score2, name='score2'),
     path('settings.html', views.settings, name='settings'),
     path('Trail.html', views.trail, name='trail'), 
+    path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
 ]

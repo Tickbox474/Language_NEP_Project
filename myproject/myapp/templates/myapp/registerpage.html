@@ -5,39 +5,36 @@
  </head>
  <body class="bg-gray-800 flex items-center justify-center min-h-screen">
   <div class="bg-gray-800 text-center p-8 rounded-lg shadow-lg w-full max-w-md">
-   <h1 class="text-4xl font-bold text-gray-200 mb-8">REGISTER</h1>
-   
-   <!-- Form section -->
-   <form class="space-y-4" method="post">
+   <h1 class="text-4xl font-bold text-gray-200 mb-8">
+    REGISTER
+   </h1>
+   <form class="space-y-4" method="POST">
     {% csrf_token %}
-    <!-- Django form fields for registration -->
     <div>
-     <label class="block text-teal-400 text-left mb-2" for="username">USERNAME</label>
-     {{ form.username }}
-    </div>
-    <div>
-     <label class="block text-teal-400 text-left mb-2" for="email">EMAIL</label>
-     {{ form.email }}
+     <label class="block text-teal-400 text-left mb-2" for="username">
+      USERNAME
+     </label>
+     <input class="w-full p-2 bg-gray-300 text-gray-800 rounded" id="username" name="username" type="text" required/>
     </div>
     <div>
-     <label class="block text-teal-400 text-left mb-2" for="password1">PASSWORD</label>
-     {{ form.password1 }}
+     <label class="block text-teal-400 text-left mb-2" for="email">
+      EMAIL
+     </label>
+     <input class="w-full p-2 bg-gray-300 text-gray-800 rounded" id="email" name="email" type="email" required/>
     </div>
     <div>
-     <label class="block text-teal-400 text-left mb-2" for="password2">CONFIRM PASSWORD</label>
-     {{ form.password2 }}
+     <label class="block text-teal-400 text-left mb-2" for="password1">
+      PASSWORD
+     </label>
+     <input class="w-full p-2 bg-gray-300 text-gray-800 rounded" id="password1" name="password1" type="password" required/>
     </div>
-
-    <!-- Register Button -->
-    <div class="mt-8">
-     <button class="bg-gray-300 text-green-900 font-bold py-2 px-4 rounded" type="submit">
-      REGISTER
-     </button>
+    <div>
+     <label class="block text-teal-400 text-left mb-2" for="password2">
+      CONFIRM PASSWORD
+     </label>
+     <input class="w-full p-2 bg-gray-300 text-gray-800 rounded" id="password2" name="password2" type="password" required/>
     </div>
-   </form>
-
-   <!-- Social Media Links (Optional) -->
-   <div class="flex justify-center space-x-4 mt-4">
+    <div class="flex justify-center space-x-4 mt-4">
      <button class="bg-white p-2 rounded">
       <img alt="Google logo" height="20" src="https://as1.ftcdn.net/v2/jpg/04/01/43/10/1000_F_401431064_5qcGVKc33vKpBvKDzUFG95mMULp2xiRs.jpg" width="20"/>
      </button>
@@ -48,11 +45,19 @@
       <img alt="Facebook logo" height="20" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" width="20"/>
      </button>
     </div>
-
-   <!-- Login Link -->
+    <div class="mt-8">
+     <button class="bg-gray-300 text-green-900 font-bold py-2 px-4 rounded" type="submit">
+      REGISTER
+     </button>
+    </div>
+   </form>
    <div class="mt-8 text-gray-200">
-    <span class="font-bold">ALREADY A MEMBER?</span>
-    <a class="text-blue-400" href='login.html'>LOG IN</a>
+    <span class="font-bold">
+     ALREADY A MEMBER?
+    </span>
+    <a class="text-blue-400" href="login.html">
+     LOG IN
+    </a>
    </div>
   </div>
  </body>
