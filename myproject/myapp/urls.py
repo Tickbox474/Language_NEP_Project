@@ -13,6 +13,7 @@ urlpatterns = [
     path('profile.html', views.profile, name='profile'),
     path('Quiz1.html', views.quiz1, name='quiz1'),
     path('Quiz2.html', views.quiz2, name='quiz2'),
+    path('scoreboard.html', views.scoreboard, name='scoreboard'),
     path('score1.html', views.score1, name='score1'),
     path('score2.html', views.score2, name='score2'),
     path('settings.html', views.settings, name='settings'),

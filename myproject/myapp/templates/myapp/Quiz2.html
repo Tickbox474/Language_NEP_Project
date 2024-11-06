@@ -1,7 +1,6 @@
 <html>
  <head>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
@@ -28,51 +27,50 @@
     <br/>
     hola como ____ hoy?
    </div>
-   <div class="grid grid-cols-2 gap-4">
-    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="correct-answer">
-     Estas
-    </button>
-    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-1">
-     Eres
-    </button>
-    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-2">
-     Tienes
-    </button>
-    <button class="bg-gray-300 text-black font-bold py-4 rounded-lg" id="wrong-answer-3">
-     Haces
-    </button>
-   </div>
-   <div class="flex justify-between items-center mt-4">
-    <a class="text-white text-2xl" href="quiz1.html" id="back-button-bottom">
-     <i class="fas fa-arrow-left">
-     </i>
-    </a>
-    <a class="text-white text-2xl" href="Mainmenu.html" id="next-question-button">
-     <i class="fas fa-arrow-right">
-     </i>
-    </a>
-   </div>
+   <form method="post">
+    {% csrf_token %}
+    <div class="grid grid-cols-2 gap-4">
+     <label class="bg-gray-300 text-black font-bold py-4 rounded-lg text-center cursor-pointer">
+      <input type="radio" name="answer" value="Choice A" class="hidden"> Eres
+     </label>
+     <label class="bg-gray-300 text-black font-bold py-4 rounded-lg text-center cursor-pointer">
+      <input type="radio" name="answer" value="Choice B" class="hidden"> Tienes
+     </label>
+     <label class="bg-gray-300 text-black font-bold py-4 rounded-lg text-center cursor-pointer">
+      <input type="radio" name="answer" value="Choice C" class="hidden"> Estas
+     </label>
+     <label class="bg-gray-300 text-black font-bold py-4 rounded-lg text-center cursor-pointer">
+      <input type="radio" name="answer" value="Choice D" class="hidden"> Haces
+     </label>
+    </div>
+    <div class="flex justify-between items-center mt-4">
+     <a class="text-white text-2xl" href="quiz1.html" id="back-button-bottom">
+      <i class="fas fa-arrow-left"></i>
+     </a>
+     <button type="submit" class="text-white text-2xl">
+      <i class="fas fa-arrow-right"></i>
+     </button>
+    </div>
+   </form>
   </div>
   <script>
-   document.getElementById('correct-answer').addEventListener('click', function() {
-            this.classList.remove('bg-gray-300', 'text-black');
-            this.classList.add('bg-green-500', 'text-white');
-        });
+   const radios = document.querySelectorAll('input[type="radio"]');
 
-        document.getElementById('wrong-answer-1').addEventListener('click', function() {
-            this.classList.remove('bg-gray-300', 'text-black');
-            this.classList.add('bg-red-500', 'text-white');
-        });
+   radios.forEach(radio => {
+     radio.addEventListener('change', function() {
+       const allLabels = document.querySelectorAll('label');
+       allLabels.forEach(label => label.classList.remove('bg-green-500', 'bg-red-500', 'text-white'));
 
-        document.getElementById('wrong-answer-2').addEventListener('click', function() {
-            this.classList.remove('bg-gray-300', 'text-black');
-            this.classList.add('bg-red-500', 'text-white');
-        });
-
-        document.getElementById('wrong-answer-3').addEventListener('click', function() {
-            this.classList.remove('bg-gray-300', 'text-black');
-            this.classList.add('bg-red-500', 'text-white');
-        });
+       if (this.checked) {
+         const label = this.parentElement;
+         if (this.value === 'Choice C') {  // Assuming "Estas" is the correct answer
+           label.classList.add('bg-green-500', 'text-white');
+         } else {
+           label.classList.add('bg-red-500', 'text-white');
+         }
+       }
+     });
+   });
   </script>
  </body>
 </html>
